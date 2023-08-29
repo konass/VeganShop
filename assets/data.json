@@ -1,0 +1,122 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Не молочные продукты"
+    },
+    {
+      "id": 2,
+      "name": "Не мясо"
+    },
+    {
+      "id": 3,
+      "name": "Сладости"
+    }
+  ],
+  "products": [
+    {
+      "id": 10,
+      "title": "Миндальное молоко",
+      "subtitle": "PlantMilk",
+      "price": "89 руб",
+      "urlToImage": "assets/plant_milk.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 11,
+      "title": "Сыр Тофу",
+      "subtitle": "Vegan Cheese",
+      "price": "140 руб",
+      "urlToImage": "assets/vegan_cheese.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 12,
+      "title": "Веганское масло",
+      "subtitle": "Vegan butter",
+      "price": "127 руб",
+      "urlToImage": "assets/vegan_butter.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 13,
+      "title": "Веганский йогурт",
+      "subtitle": "Vegan yogurt",
+      "price": "56 руб",
+      "urlToImage": "assets/vegan_yogurt.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 14,
+      "title": "Веганское мороженное",
+      "subtitle": "Vegan Ice Cream",
+      "price": "99 руб",
+      "urlToImage": "assets/ice_cream.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 15,
+      "title": "Веганская сметана",
+      "subtitle": "Vegan sour cream",
+      "price": "179 руб",
+      "urlToImage": "assets/vegan_sour_cream.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 20,
+      "title": "Веганская рыба",
+      "subtitle": "VeganFish",
+      "price": "210 руб",
+      "urlToImage": "assets/vegan_fish.jpg",
+      "categoryId": 2
+    },
+    {
+      "id": 21,
+      "title": "Веганские котлеты",
+      "subtitle": "VeganCutlets",
+      "price": "145 руб",
+      "urlToImage": "assets/vegan_cutlets.jpg",
+      "categoryId": 2
+    },
+    {
+      "id": 22,
+      "title": "Веганские пельмени",
+      "subtitle": "VeganDumplings",
+      "price": "199 руб",
+      "urlToImage": "assets/vegan_dumplings.jpg",
+      "categoryId": 2
+    },
+    {
+      "id": 23,
+      "title": "Веганские сосиски",
+      "subtitle": "VeganSausages",
+      "price": "290 руб",
+      "urlToImage": "assets/vegan_sausages.jpg",
+      "categoryId": 2
+    },
+    {
+      "id": 30,
+      "title": "Веганский шоколад",
+      "subtitle": "VeganSweetness",
+      "price": "130 руб",
+      "urlToImage": "assets/vegan_chocolate.jpg",
+      "categoryId": 3
+    },
+    {
+      "id": 31,
+      "title": "Веганское овсясное печенье",
+      "subtitle": "Oatmeal",
+      "price": "110 руб",
+      "urlToImage": "assets/vegan_oatmeal_cookies.jpg",
+      "categoryId": 3
+    },
+    {
+      "id": 32,
+      "title": "Веганский чизкейк",
+      "subtitle": "VeganCheesecake",
+      "price": "210 руб",
+      "urlToImage": "assets/cheesecakes.jpg",
+      "categoryId": 3
+    }
+  ]
+}

@@ -61,20 +61,22 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/plant_milk.jpg
-     - assets/vegan_cheese.jpg
-     - assets/vegan_chocolate.jpg
-     - assets/vegan_oatmeal_cookies.jpg
-     - assets/vegan_cutlets.jpg
-     - assets/vegan_fish.jpg
-     - assets/vegan_dumplings.jpg
-     - assets/vegan_logo.jpg
-     - assets/vegan_butter.jpg
-     - assets/vegan_yogurt.jpg
-     - assets/ice_cream.jpg
-     - assets/cheesecakes.jpg
-     - assets/vegan_sour_cream.jpg
-     - assets/vegan_sausages.jpg
+    - assets/plant_milk.jpg
+    - assets/vegan_cheese.jpg
+    - assets/vegan_chocolate.jpg
+    - assets/vegan_oatmeal_cookies.jpg
+    - assets/vegan_cutlets.jpg
+    - assets/vegan_fish.jpg
+    - assets/vegan_dumplings.jpg
+    - assets/vegan_logo.jpg
+    - assets/vegan_butter.jpg
+    - assets/vegan_yogurt.jpg
+    - assets/ice_cream.jpg
+    - assets/cheesecakes.jpg
+    - assets/vegan_sour_cream.jpg
+    - assets/vegan_sausages.jpg
+    - assets/data.json
+    - assets/image_error.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -87,10 +89,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Montserrat
-       fonts:
-         - asset: fonts/Montserrat-Regular.ttf
-         - asset: fonts/Montserrat-Bold.ttf
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat-Regular.ttf
+        - asset: fonts/Montserrat-Bold.ttf
 
 
 

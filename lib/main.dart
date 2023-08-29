@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_online_shop/pages/intro_page.dart';
-import 'package:task_online_shop/theme/AppColors.dart';
+import 'package:task_online_shop/theme/app_colors.dart';
+
 
 void main() => runApp(const OnlineShop ());
 class OnlineShop extends StatelessWidget {
