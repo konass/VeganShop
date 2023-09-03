@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:task_online_shop/pages/home_page.dart';
-import '../theme/app_colors.dart';
+import 'package:task_online_shop/pages/home/home_page.dart';
+import '../../theme/app_colors.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);

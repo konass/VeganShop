@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task_online_shop/componets/tabs_items.dart';
 import 'package:task_online_shop/model/category.dart';
-import 'package:task_online_shop/pages/product_page.dart';
-import '../theme/app_colors.dart';
+import 'package:task_online_shop/pages/home/widgets/logo_widget.dart';
+import 'package:task_online_shop/pages/home/widgets/product_page.dart';
+import '../../theme/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -33,43 +34,7 @@ class _HomePageState extends State<HomePage> {
                   length: categoryList.length,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsets.only(left: 25, top: 27, right: 30),
-                            child: Image.asset(
-                              'assets/vegan_logo.jpg',
-                              width: 81,
-                              height: 78,
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 40),
-                                child: Text('Plant world',
-                                    style: TextStyle(
-                                        fontSize: 24,
-                                        color: AppColors.textColor,
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text('Vegan online store',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color: AppColors.textColor,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.normal)),
-                            ],
-                          ),
-                        ],
-                      ),
+                      LogoWidget(),
                       const SizedBox(
                         height: 24,
                       ),

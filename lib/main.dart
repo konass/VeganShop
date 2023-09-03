@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:task_online_shop/pages/intro_page.dart';
+import 'package:provider/provider.dart';
+import 'package:task_online_shop/pages/intro/intro_page.dart';
 import 'package:task_online_shop/theme/app_colors.dart';
 
+import 'model/cart.dart';
 
-void main() => runApp(const OnlineShop ());
+void main() => runApp(
+      ChangeNotifierProvider(
+        create: (context) => Cart(),
+        child: const OnlineShop(),
+      ),
+    );
+
 class OnlineShop extends StatelessWidget {
-  const OnlineShop ({Key? key}) : super(key: key);
+  const OnlineShop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
