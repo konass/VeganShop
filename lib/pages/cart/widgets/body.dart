@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_online_shop/pages/cart/widgets/cart_button.dart';
 import 'package:task_online_shop/pages/cart/widgets/cart_list_view.dart';
-
 import '../../../model/cart.dart';
 import '../../../theme/app_colors.dart';
 

@@ -5,18 +5,8 @@ import 'package:task_online_shop/pages/home/widgets/logo_widget.dart';
 import 'package:task_online_shop/pages/home/widgets/product_page.dart';
 import '../../theme/app_colors.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

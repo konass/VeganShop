@@ -1,21 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:task_online_shop/pages/cart/widgets/plus_minus_button.dart';
+import '../../../model/cart.dart';
 import '../../../model/product.dart';
 import '../../../theme/app_colors.dart';
 
 class CartItem extends StatelessWidget {
   final Product product;
+  final Cart cartItems;
 
   const CartItem({
     Key? key,
     required this.product,
+    required this.cartItems,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Color(0x75f5f5f5)),
+          borderRadius: BorderRadius.circular(20), color: Color(0xfff5f5f5)),
       margin: EdgeInsets.only(bottom: 14),
       padding: EdgeInsets.only(left: 5, right: 5),
       child: ListTile(
@@ -42,6 +46,9 @@ class CartItem extends StatelessWidget {
                 color: AppColors.textColor,
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
+        trailing: PlusMinusButton(
+          product: product,
+        ),
       ),
     );
   }

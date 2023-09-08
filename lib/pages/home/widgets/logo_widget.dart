@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:task_online_shop/componets/cart_icon.dart';
 
 import '../../../theme/app_colors.dart';
-import '../../cart/cart_page.dart';
 
 class LogoWidget extends StatelessWidget {
   const LogoWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return SafeArea(
+        child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -49,14 +49,8 @@ class LogoWidget extends StatelessWidget {
         SizedBox(
           width: 10,
         ),
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/details_cart.svg",
-          ),
-          onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CartPage())),
-        )
+        CartIcon()
       ],
-    );
+    ));
   }
 }
