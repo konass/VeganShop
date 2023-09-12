@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:task_online_shop/pages/intro/intro_page.dart';
 import 'package:task_online_shop/theme/app_colors.dart';
 
-import 'model/cart.dart';
+import 'provider/cart.dart';
 
 void main() => runApp(
       ChangeNotifierProvider(

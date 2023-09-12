@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_online_shop/pages/cart/widgets/cart_button.dart';
 import 'package:task_online_shop/pages/cart/widgets/cart_list_view.dart';
-import '../../../model/cart.dart';
+import 'package:task_online_shop/pages/cart/widgets/total_amount.dart';
 import '../../../theme/app_colors.dart';
 
 class CartBody extends StatelessWidget {
@@ -9,8 +9,6 @@ class CartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Cart();
-    final int totalAmount = cart.totalAmount();
     Size size = MediaQuery.of(context).size;
     return Container(
         margin: EdgeInsets.only(
@@ -28,16 +26,11 @@ class CartBody extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            CartListView(cart: cart),
+            CartListView(),
             Divider(),
             Align(
               alignment: Alignment.centerRight,
-              child: Text(("Итого: ${totalAmount}"),
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.textColor,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.bold)),
+              child: TotalAmount(),
             ),
             CartButton(),
             SizedBox(

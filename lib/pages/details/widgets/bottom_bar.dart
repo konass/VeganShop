@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../model/cart.dart';
+import '../../../model/cart_model.dart';
+import '../../../provider/cart.dart';
 import '../../../model/product.dart';
 import '../../../theme/app_colors.dart';
 
@@ -22,7 +22,12 @@ class BottomBarDetails extends StatelessWidget {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
         TextButton(
-          onPressed: () => cart.addToCart(product),
+          onPressed: () => cart.addToCart(CartModel(
+              id: product.id!,
+              title: product.title!,
+              price: product.price!,
+              urlToImage: product.urlToImage!,
+              quantity: 1)),
           child: Padding(
             padding: EdgeInsets.only(left: 20, right: 20),
             child: Text("в корзину",

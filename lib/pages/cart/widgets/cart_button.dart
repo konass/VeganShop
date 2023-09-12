@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../model/cart.dart';
+import '../../../provider/cart.dart';
 import '../../../theme/app_colors.dart';
 
 class CartButton extends StatelessWidget {

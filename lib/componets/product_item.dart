@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import 'package:task_online_shop/componets/product_item_button.dart';
 import 'package:task_online_shop/model/product.dart';
-import '../model/cart.dart';
+import '../provider/cart.dart';
 import '../theme/app_colors.dart';
 
 class ProductItem extends StatelessWidget {
@@ -16,7 +17,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Cart();
+    final cart = Provider.of<Cart>(context);
     return GestureDetector(
         onTap: press,
         child: Container(
@@ -67,12 +68,7 @@ class ProductItem extends StatelessWidget {
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
                                 )),
-                            IconButton(
-                              icon: SvgPicture.asset(
-                                "assets/cart.svg",
-                              ),
-                              onPressed: () => cart.addToCart(product),
-                            )
+                            ProductItemButton(product)
                           ],
                         ),
                       ]))

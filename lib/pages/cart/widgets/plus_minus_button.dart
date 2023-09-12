@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../model/cart.dart';
+import '../../../model/cart_model.dart';
+import '../../../provider/cart.dart';
 import '../../../model/product.dart';
 import '../../../theme/app_colors.dart';
 
 class PlusMinusButton extends StatelessWidget {
-  final Product product;
+  final CartModel cartModel;
 
-  const PlusMinusButton({Key? key, required this.product}) : super(key: key);
+  const PlusMinusButton({Key? key, required this.cartModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +21,18 @@ class PlusMinusButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            onPressed: () => cart.removeFromCart(product),
+            onPressed: () => cart.removeFromCart(cartModel),
             icon: Icon(Icons.remove),
             color: AppColors.textColor,
           ),
-          Text("${cart.cartProducts[product]}",
+          Text("${cartModel.quantity}",
               style: TextStyle(
                   fontSize: 12,
                   color: AppColors.textColor,
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.bold)),
           IconButton(
-            onPressed: () => cart.addToCart(product),
+            onPressed: () => cart.addToCart(cartModel),
             icon: Icon(Icons.add),
             color: AppColors.textColor,
           ),
