@@ -6,7 +6,6 @@ class Cart with ChangeNotifier {
   final Map<int, CartModel> _cartProducts = {};
 
   Map<int, CartModel> get cartProducts => _cartProducts;
-  int? _items = 0;
 
   static final Cart _instance = Cart._internal();
 
@@ -16,10 +15,10 @@ class Cart with ChangeNotifier {
 
   Cart._internal();
 
-  Future<int?> getItems() async {
-    _items = await DatabaseHandler.getItems();
-    if (_items != 0) {
-      return _items;
+  Future<int?> getItemsCount() async {
+    var items = await DatabaseHandler.getItemsCount();
+    if (items != 0) {
+      return items;
     } else {
       return 0;
     }
@@ -32,7 +31,6 @@ class Cart with ChangeNotifier {
 
   Future<List<CartModel>?> getCart() async {
     final cart = await DatabaseHandler.getAllCartItems();
-    _items = cart != null ? cart.length - 1 : 0;
     cart?.forEach((item) {
       _cartProducts.putIfAbsent(item.id, () => item);
     });
@@ -40,16 +38,12 @@ class Cart with ChangeNotifier {
   }
 
   Future<int> totalAmount() async {
-    var sum = 0;
     final cart = await DatabaseHandler.getAllCartItems();
-    if (cart != null) {
-      for (var cartItem in cart) {
-        sum += cartItem.price * cartItem.quantity;
-      }
-      return sum;
-    } else {
-      return 0;
-    }
+    final sum = cart!.fold(
+        0,
+        (previousValue, element) =>
+            previousValue + element.price * element.quantity);
+    return sum;
   }
 
   bool isInCart(id) => _cartProducts.containsKey(id);
@@ -86,7 +80,6 @@ class Cart with ChangeNotifier {
   }
 
   void clearCart() async {
-    _items = 0;
     _cartProducts.clear();
     await DatabaseHandler.clearCart();
     notifyListeners();

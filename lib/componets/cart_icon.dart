@@ -12,7 +12,7 @@ class CartIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     var cart = Provider.of<Cart>(context);
     return FutureBuilder(
-        future: cart.getItems(),
+        future: cart.getItemsCount(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text("${snapshot.error} "));
