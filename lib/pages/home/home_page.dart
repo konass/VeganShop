@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_online_shop/componets/tabs_items.dart';
 import 'package:task_online_shop/model/category.dart';
+import 'package:task_online_shop/pages/home/widgets/drop_down_button.dart';
 import 'package:task_online_shop/pages/home/widgets/logo_widget.dart';
 import 'package:task_online_shop/pages/home/widgets/product_page.dart';
 import '../../theme/app_colors.dart';
@@ -23,10 +24,18 @@ class HomePage extends StatelessWidget {
                 return DefaultTabController(
                   length: categoryList.length,
                   child: Column(
+
                     children: [
                       LogoWidget(),
                       const SizedBox(
-                        height: 24,
+                        height: 10,
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: DropDownButton(),
+                      ),
+                      const SizedBox(
+                        height: 5,
                       ),
                       Container(
                           color: AppColors.primaryColor,
@@ -40,7 +49,7 @@ class HomePage extends StatelessWidget {
                         child: TabBarView(
                             children: createTabs(categoryList)
                                 .map((category) =>
-                                    ProductPage(category: category.category))
+                                ProductPage(category: category.category))
                                 .toList()),
                       ),
                     ],

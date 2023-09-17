@@ -1,10 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 import 'package:task_online_shop/componets/product_item.dart';
 import 'package:task_online_shop/model/category.dart';
 import 'package:flutter/services.dart' as rootBundle;
 import 'package:task_online_shop/pages/details/details_page.dart';
+import 'package:task_online_shop/pages/home/widgets/sort_products_by_value.dart';
+import 'package:task_online_shop/provider/shared_preferences_provider.dart';
 
 import '../../../model/product.dart';
 
@@ -27,6 +31,7 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var prefsData = Provider.of<SharedPreferencesProvider>(context);
     return Scaffold(
         body: FutureBuilder(
             future: loadProductFromJson(),
@@ -35,6 +40,9 @@ class ProductPage extends StatelessWidget {
                 return Center(child: Text("${snapshot.error}"));
               } else if (snapshot.hasData) {
                 var productList = snapshot.data as List<Product>;
+                var sortedProductList =
+                    sortProductByValue(productList, prefsData.returnValue()) ??
+                        productList;
                 return GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -43,7 +51,7 @@ class ProductPage extends StatelessWidget {
                     itemCount: productList.length,
                     itemBuilder: (context, index) {
                       return ProductItem(
-                        product: productList[index],
+                        product: sortedProductList[index],
                         press: () => Navigator.push(
                             context,
                             MaterialPageRoute(

@@ -43,7 +43,7 @@ class DatabaseHandler {
     );
   }
 
-  static Future<List<CartModel>?> getAllCartItems() async {
+  static Future<List<CartModel>> getAllCartItems() async {
     final List<Map<String, dynamic>> maps = await db!.query(_tableName);
     return List.generate(
         maps.length, (index) => CartModel.fromJson(maps[index]));

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../model/cart_model.dart';
 import '../../../provider/cart.dart';
-import '../../../model/product.dart';
+
 import '../../../theme/app_colors.dart';
 
 class PlusMinusButton extends StatelessWidget {

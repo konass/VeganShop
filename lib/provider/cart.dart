@@ -29,9 +29,9 @@ class Cart with ChangeNotifier {
     return cartItem;
   }
 
-  Future<List<CartModel>?> getCart() async {
+  Future<List<CartModel>> getCart() async {
     final cart = await DatabaseHandler.getAllCartItems();
-    cart?.forEach((item) {
+    cart.forEach((item) {
       _cartProducts.putIfAbsent(item.id, () => item);
     });
     return cart;
@@ -39,7 +39,7 @@ class Cart with ChangeNotifier {
 
   Future<int> totalAmount() async {
     final cart = await DatabaseHandler.getAllCartItems();
-    final sum = cart!.fold(
+    final sum = cart.fold(
         0,
         (previousValue, element) =>
             previousValue + element.price * element.quantity);
