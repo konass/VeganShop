@@ -15,8 +15,8 @@ class Cart with ChangeNotifier {
 
   Cart._internal();
 
-  Future<int?> getItemsCount() async {
-    var items = await DatabaseHandler.getItemsCount();
+  Future<int?> getItemsCount(int userId) async {
+    var items = await DatabaseHandler.getItemsCount(userId);
     if (items != 0) {
       return items;
     } else {
@@ -24,21 +24,21 @@ class Cart with ChangeNotifier {
     }
   }
 
-  Future<CartModel?> getCartById(int id) async {
-    final cartItem = await DatabaseHandler.getCartItemById(id);
+  Future<CartModel?> getCartById(int id, int userId) async {
+    final cartItem = await DatabaseHandler.getCartItemById(id, userId);
     return cartItem;
   }
 
-  Future<List<CartModel>> getCart() async {
-    final cart = await DatabaseHandler.getAllCartItems();
-    cart.forEach((item) {
+  Future<List<CartModel>> getCart(int userId) async {
+    final cart = await DatabaseHandler.getUserCartItems(userId);
+    for (var item in cart) {
       _cartProducts.putIfAbsent(item.id, () => item);
-    });
+    }
     return cart;
   }
 
-  Future<int> totalAmount() async {
-    final cart = await DatabaseHandler.getAllCartItems();
+  Future<int> totalAmount(int userId) async {
+    final cart = await DatabaseHandler.getUserCartItems(userId);
     final sum = cart.fold(
         0,
         (previousValue, element) =>
@@ -79,9 +79,9 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  void clearCart() async {
+  void clearCart(int userId) async {
     _cartProducts.clear();
-    await DatabaseHandler.clearCart();
+    await DatabaseHandler.clearCart(userId);
     notifyListeners();
   }
 }

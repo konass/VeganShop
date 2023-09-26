@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:task_online_shop/data/database.dart';
 import 'package:task_online_shop/pages/intro/intro_page.dart';
 import 'package:task_online_shop/provider/shared_preferences_provider.dart';
+import 'package:task_online_shop/provider/user_provider.dart';
 import 'package:task_online_shop/theme/app_colors.dart';
 
 import 'provider/cart.dart';
@@ -10,6 +11,7 @@ import 'provider/cart.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseHandler.initDB();
+  await SharedPreferencesProvider.initPreferences();
   runApp(OnlineShop());
 }
 
@@ -23,10 +25,15 @@ class OnlineShop extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => Cart()),
         ChangeNotifierProvider(
             create: (context) => SharedPreferencesProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider()),
       ],
       child: MaterialApp(
         home: IntroPage(),
-        theme: ThemeData(primaryColor: AppColors.primaryColor),
+        theme: ThemeData(
+            primaryColor: AppColors.primaryColor,
+            inputDecorationTheme: InputDecorationTheme(
+                focusedBorder:
+                    OutlineInputBorder(borderSide: BorderSide.none))),
       ),
     );
   }

@@ -40,9 +40,9 @@ class ProductPage extends StatelessWidget {
                 return Center(child: Text("${snapshot.error}"));
               } else if (snapshot.hasData) {
                 var productList = snapshot.data as List<Product>;
-                var sortedProductList =
-                    sortProductByValue(productList, prefsData.returnValue()) ??
-                        productList;
+                var sortedProductList = sortProductByValue(
+                        productList, prefsData.getListSorting()) ??
+                    productList;
                 return GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

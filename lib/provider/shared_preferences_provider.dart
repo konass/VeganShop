@@ -1,35 +1,44 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:task_online_shop/componets/drop_down_items.dart';
 
 class SharedPreferencesProvider with ChangeNotifier {
-  late SharedPreferences _prefs;
-  String _selectedValue = priceIncreasing;
-  static const String prefsValue = 'sort_value';
+  static SharedPreferences? _prefs;
+  static const String prefsKeyListSorting = 'sort_value';
+  static const String prefsKeyAuthorization = 'auth_key';
+  static const String prefsKeyUserId = 'user_key';
 
-  SharedPreferencesProvider() {
-    initPreferences();
-  }
-
-  String get selectedValue => _selectedValue;
-
-  Future<void> initPreferences() async {
+  static Future<void> initPreferences() async {
     _prefs = await SharedPreferences.getInstance();
-    loadPreferences();
   }
 
-  Future<void> loadPreferences() async {
-    _selectedValue = _prefs.getString(prefsValue) ?? priceIncreasing;
-    return notifyListeners();
+  String getListSorting() {
+    return _prefs?.getString(prefsKeyListSorting) ?? "Цена по возврастанию";
   }
 
-
-  String returnValue() {
-    return _prefs.getString(prefsValue) ?? priceIncreasing;
+  bool getAuthValue() {
+    return _prefs?.getBool(prefsKeyAuthorization) ?? false;
   }
 
-  void saveToSharedPreferences(String value) {
-    _prefs.setString(prefsValue, value);
+  int getUserId() {
+    return _prefs?.getInt(prefsKeyUserId) ?? -1;
+  }
+
+  void saveAuthValue(bool value) {
+    _prefs?.setBool(prefsKeyAuthorization, value);
     notifyListeners();
+  }
+
+  void saveUserId(int value) {
+    _prefs?.setInt(prefsKeyUserId, value);
+    notifyListeners();
+  }
+
+  void saveListSorting(String value) {
+    _prefs?.setString(prefsKeyListSorting, value);
+    notifyListeners();
+  }
+
+  void clearPreferences() {
+    _prefs?.clear();
   }
 }

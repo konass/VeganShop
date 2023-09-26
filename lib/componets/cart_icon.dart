@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:task_online_shop/componets/getUserIdFunction.dart';
+import 'package:task_online_shop/provider/shared_preferences_provider.dart';
 import 'package:task_online_shop/theme/app_colors.dart';
 import '../provider/cart.dart';
 import '../pages/cart/cart_page.dart';
@@ -11,8 +13,9 @@ class CartIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cart = Provider.of<Cart>(context);
+    var prefsData = Provider.of<SharedPreferencesProvider>(context);
     return FutureBuilder(
-        future: cart.getItemsCount(),
+        future: cart.getItemsCount(getUserId(prefsData)),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text("${snapshot.error} "));

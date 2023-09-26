@@ -85,6 +85,8 @@ flutter:
     - assets/arrow_back_circle.svg
     - assets/details_cart.svg
     - assets/cart.svg
+    - assets/welcome_img.jpg
+    - assets/log_out.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_online_shop/pages/authentication/welcome/welcome_page.dart';
 import 'package:task_online_shop/pages/home/home_page.dart';
+import '../../provider/shared_preferences_provider.dart';
 import '../../theme/app_colors.dart';
 
 class IntroPage extends StatefulWidget {
@@ -24,8 +27,14 @@ class _IntroPageState extends State<IntroPage> {
   }
 
   void route() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
+    var prefsData = SharedPreferencesProvider().getAuthValue();
+    if (!prefsData) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => WelcomePage()));
+    } else {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
+    }
   }
 
   @override

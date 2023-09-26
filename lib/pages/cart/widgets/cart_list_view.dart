@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task_online_shop/data/database.dart';
 import 'package:task_online_shop/model/cart_model.dart';
 import 'package:task_online_shop/theme/app_colors.dart';
+import '../../../componets/getUserIdFunction.dart';
 import '../../../provider/cart.dart';
+import '../../../provider/shared_preferences_provider.dart';
 import 'cart_item.dart';
 
 class CartListView extends StatelessWidget {
@@ -14,9 +15,9 @@ class CartListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
-    // final cartItems = cart.getCart();
+    final prefsData = Provider.of<SharedPreferencesProvider>(context);
     return FutureBuilder(
-        future: cart.getCart(),
+        future: cart.getCart(getUserId(prefsData)),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text("${snapshot.error} "));
@@ -25,27 +26,26 @@ class CartListView extends StatelessWidget {
             return Expanded(
               child: cartItems.isEmpty
                   ? Text('Нет товаров в корзине',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.textColor,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.normal))
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.textColor,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.normal))
                   : ListView.builder(
-                  itemCount: cartItems.length,
-                  itemBuilder: (context, index) {
-                    return CartItem(
-                      cartModel: cartItems[index],
-                    );
-                  }),
+                      itemCount: cartItems.length,
+                      itemBuilder: (context, index) {
+                        return CartItem(
+                          cartModel: cartItems[index],
+                        );
+                      }),
             );
           } else {
-            return
-              Text('Нет товаров в корзине',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.textColor,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.normal));
+            return Text('Нет товаров в корзине',
+                style: TextStyle(
+                    fontSize: 16,
+                    color: AppColors.textColor,
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.normal));
           }
         });
   }

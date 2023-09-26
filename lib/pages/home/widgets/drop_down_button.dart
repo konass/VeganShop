@@ -10,17 +10,23 @@ class DropDownButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var prefsData = Provider.of<SharedPreferencesProvider>(context);
+
     return Padding(
         padding: EdgeInsets.only(right: 20),
         child: DropdownButton(
-            value: prefsData.returnValue(),
-            items: dropDownItems.map(buildMenuItem).toList(),
+            value: prefsData.getListSorting(),
+            items: ListSorting.values.map((name) {
+              String nameOfItems = getNameOfItems(name);
+              return buildMenuItem(nameOfItems);
+            }).toList(),
             onChanged: (newValue) {
-              prefsData.saveToSharedPreferences(newValue);
+              if (newValue != null) {
+                prefsData.saveListSorting(newValue);
+              }
             }));
   }
 
-  DropdownMenuItem buildMenuItem(String item) => DropdownMenuItem(
+  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
         value: item,
         child: Text(item,
             style: TextStyle(
@@ -29,4 +35,19 @@ class DropDownButton extends StatelessWidget {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
       );
+
+  String getNameOfItems(ListSorting name) {
+    switch (name) {
+      case ListSorting.priceIncreasing:
+        return 'Цена по возврастанию';
+      case ListSorting.priceDecreasing:
+        return 'Цена по убыванию';
+      case ListSorting.nameIncreasing:
+        return 'Название по возврастанию';
+      case ListSorting.nameDecreasing:
+        return 'Название по убыванию';
+      default:
+        return '';
+    }
+  }
 }

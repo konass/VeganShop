@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task_online_shop/componets/cart_icon.dart';
+import 'package:task_online_shop/componets/log_out_icon.dart';
 
 import '../../../theme/app_colors.dart';
 
@@ -18,8 +19,8 @@ class LogoWidget extends StatelessWidget {
           padding: EdgeInsets.only(left: 10, top: 27, right: 20),
           child: Image.asset(
             'assets/vegan_logo.jpg',
-            width: 81,
-            height: 78,
+            width: 78,
+            height: 75,
           ),
         ),
         Column(
@@ -46,10 +47,8 @@ class LogoWidget extends StatelessWidget {
                     fontWeight: FontWeight.normal)),
           ],
         ),
-        SizedBox(
-          width: 10,
-        ),
-        CartIcon()
+        CartIcon(),
+        LogOutIcon()
       ],
     ));
   }

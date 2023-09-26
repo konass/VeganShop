@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_online_shop/componets/getUserIdFunction.dart';
 import '../../../model/cart_model.dart';
+import '../../../model/user.dart';
 import '../../../provider/cart.dart';
 import '../../../model/product.dart';
+import '../../../provider/shared_preferences_provider.dart';
 import '../../../theme/app_colors.dart';
 
 class BottomBarDetails extends StatelessWidget {
@@ -11,6 +15,7 @@ class BottomBarDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var prefsData = Provider.of<SharedPreferencesProvider>(context);
     final cart = Cart();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +32,8 @@ class BottomBarDetails extends StatelessWidget {
               title: product.title!,
               price: product.price!,
               urlToImage: product.urlToImage!,
-              quantity: 1)),
+              quantity: 1,
+              userId: getUserId(prefsData))),
           child: Padding(
             padding: EdgeInsets.only(left: 20, right: 20),
             child: Text("в корзину",
