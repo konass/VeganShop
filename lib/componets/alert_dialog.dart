@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../authentication/welcome/welcome_page.dart';
+import '../pages/authentication/welcome/welcome_page.dart';
 
-void cartAlertDialog(BuildContext context) async {
+void userAlertDialog(
+    BuildContext context, String title, String subTitle) async {
   await showDialog<String>(
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      title: const Text('Для данного действия необходимо авторизоваться'),
-      content: const Text('Пройти регистрацию/войти?'),
+      title: Text('$title'),
+      content: Text('$subTitle'),
       actions: <Widget>[
         TextButton(
           onPressed: () => Navigator.pushReplacement(

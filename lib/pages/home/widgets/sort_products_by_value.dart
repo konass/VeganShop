@@ -2,9 +2,8 @@ import '../../../componets/drop_down_items.dart';
 import '../../../model/product.dart';
 
 List<Product>? sortProductByValue(
-    List<Product> productList, String selectedValue) {
-  var selectedValueInListSorting = getEnumFromName(selectedValue);
-  switch (selectedValueInListSorting) {
+    List<Product> productList, ListSorting selectedValue) {
+  switch (selectedValue) {
     case ListSorting.priceIncreasing:
       productList.sort((a, b) => a.price!.compareTo(b.price!));
       return productList;
@@ -19,20 +18,5 @@ List<Product>? sortProductByValue(
       return productList;
     default:
       return productList;
-  }
-}
-
-ListSorting getEnumFromName(String name) {
-  switch (name) {
-    case "Цена по возврастанию":
-      return ListSorting.priceIncreasing;
-    case "Цена по убыванию":
-      return ListSorting.priceDecreasing;
-    case "Название по возврастанию":
-      return ListSorting.nameIncreasing;
-    case "Название по убыванию":
-      return ListSorting.nameDecreasing;
-    default:
-      return ListSorting.priceIncreasing;
   }
 }

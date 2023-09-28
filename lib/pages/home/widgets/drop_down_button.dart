@@ -13,11 +13,10 @@ class DropDownButton extends StatelessWidget {
 
     return Padding(
         padding: EdgeInsets.only(right: 20),
-        child: DropdownButton(
+        child: DropdownButton<ListSorting>(
             value: prefsData.getListSorting(),
             items: ListSorting.values.map((name) {
-              String nameOfItems = getNameOfItems(name);
-              return buildMenuItem(nameOfItems);
+              return buildMenuItem(name);
             }).toList(),
             onChanged: (newValue) {
               if (newValue != null) {
@@ -26,9 +25,10 @@ class DropDownButton extends StatelessWidget {
             }));
   }
 
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+  DropdownMenuItem<ListSorting> buildMenuItem(ListSorting item) =>
+      DropdownMenuItem(
         value: item,
-        child: Text(item,
+        child: Text(getNameOfItems(item),
             style: TextStyle(
                 fontSize: 12,
                 color: AppColors.textColor,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_online_shop/componets/getUserIdFunction.dart';
-import 'package:task_online_shop/pages/cart/widgets/alert_dialog.dart';
+import 'package:task_online_shop/componets/alert_dialog.dart';
 import 'package:task_online_shop/provider/shared_preferences_provider.dart';
 
 import '../../../provider/cart.dart';
@@ -23,7 +23,10 @@ class CartButton extends StatelessWidget {
             final snackBar = SnackBar(content: Text("Успешно"));
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           } else {
-            cartAlertDialog(context);
+            userAlertDialog(
+                context,
+                "Для данного действия необходимо авторизоваться",
+                "Пройти регистрацию / войти");
           }
         }
       },

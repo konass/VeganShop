@@ -27,15 +27,24 @@ class SignUpFormButton extends StatelessWidget {
       onPressed: () {
         prefsData.clearPreferences();
         if (formKey.currentState!.validate()) {
-          var userId = UniqueKey().hashCode;
-          user.addNewUser(User(
-              id: userId,
-              name: nameController.text,
-              password: passwordController.text));
-          prefsData.saveUserId(userId);
-          prefsData.saveAuthValue(true);
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
+          user.getCurrentUserByName(nameController.text).then((value) {
+            if (value != null) {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              const snackBar = SnackBar(
+                  content: Text("Пользователь с данным именем уже существует"));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            } else {
+              var userId = UniqueKey().hashCode;
+              user.addNewUser(User(
+                  id: userId,
+                  name: nameController.text,
+                  password: passwordController.text));
+              prefsData.saveUserId(userId);
+              prefsData.saveAuthValue(true);
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const HomePage()));
+            }
+          });
         } else {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           const snackBar = SnackBar(content: Text("Заполните все поля"));

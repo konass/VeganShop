@@ -12,4 +12,12 @@ class UserProvider with ChangeNotifier {
   Future<User?> getUser(String name, String password) async {
     return await DatabaseHandler.getCurrentUserId(name, password);
   }
+
+  Future<User?> getCurrentUserByName(String name) async {
+    return await DatabaseHandler.getCurrentUserByName(name);
+  }
+
+  Future<String?> getCurrentUserById(int id) async {
+    return await DatabaseHandler.getCurrentUserById(id);
+  }
 }

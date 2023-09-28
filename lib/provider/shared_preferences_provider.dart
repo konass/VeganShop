@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:task_online_shop/componets/drop_down_items.dart';
 
 class SharedPreferencesProvider with ChangeNotifier {
   static SharedPreferences? _prefs;
@@ -11,8 +12,16 @@ class SharedPreferencesProvider with ChangeNotifier {
     _prefs = await SharedPreferences.getInstance();
   }
 
-  String getListSorting() {
-    return _prefs?.getString(prefsKeyListSorting) ?? "Цена по возврастанию";
+  ListSorting getListSorting() {
+    final stringValue = _prefs?.getString(prefsKeyListSorting);
+    if (stringValue != null) {
+      for (ListSorting value in ListSorting.values) {
+        if (value.name == stringValue) {
+          return value;
+        }
+      }
+    }
+    return ListSorting.priceIncreasing;
   }
 
   bool getAuthValue() {
@@ -33,8 +42,8 @@ class SharedPreferencesProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void saveListSorting(String value) {
-    _prefs?.setString(prefsKeyListSorting, value);
+  void saveListSorting(ListSorting value) {
+    _prefs?.setString(prefsKeyListSorting, value.name);
     notifyListeners();
   }
 
